@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-
+    public float speed;
+    [SerializeField] Camera camera;
     public enum PlayerStates
     {
         Idle,
@@ -15,8 +16,15 @@ public class PlayerController : MonoBehaviour
     }
 
     public PlayerStates currentState = PlayerStates.Idle;
+    Vector2 _movement;
+    Vector2 _mousePos;
 
+    Rigidbody2D _rigidbody2D;
 
+    private void Awake()
+    {
+        _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +35,26 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody2D.AddForce(_movement * speed);
+        Vector2 faceingDir = _mousePos - _rigidbody2D.position;
+        //float angle = Mathf.Atan2(faceingDir.y, faceingDir.x) * Mathf.Rad2Deg;
+        //_rigidbody2D.MoveRotation(angle);
+
+
+    }
+
+    public void OnMove(InputAction.CallbackContext cc)
+    {
+        _movement = cc.ReadValue<Vector2>();
+    }
+
+    public void OnMousePos(InputAction.CallbackContext cc)
+    {
+        _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
+        transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
     }
 }
