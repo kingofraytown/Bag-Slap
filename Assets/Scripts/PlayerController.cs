@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     [SerializeField] Camera camera;
+    [SerializeField] float slapTime;
+    float slapTimer;
     public enum PlayerStates
     {
         Idle,
@@ -18,12 +20,14 @@ public class PlayerController : MonoBehaviour
     public PlayerStates currentState = PlayerStates.Idle;
     Vector2 _movement;
     Vector2 _mousePos;
+    Animator animator;
 
     Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
         _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -34,7 +38,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentState == PlayerStates.Slapping)
+        {
+            slapTimer -= Time.deltaTime;
+
+            if(slapTimer <= 0f)
+            {
+                currentState = PlayerStates.Idle;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -56,5 +68,16 @@ public class PlayerController : MonoBehaviour
     {
         _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
         transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
+    }
+
+    public void OnSlap()
+    {
+        //trigger slap
+        if (currentState != PlayerStates.Slapping)
+        {
+            animator.SetTrigger("Slap");
+            currentState = PlayerStates.Slapping;
+            slapTimer = slapTime;
+        }
     }
 }
