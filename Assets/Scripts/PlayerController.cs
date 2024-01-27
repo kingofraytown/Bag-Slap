@@ -80,4 +80,12 @@ public class PlayerController : MonoBehaviour
             slapTimer = slapTime;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy_slap")
+        {
+            Debug.Log("player slapped");
+        }
+    }
 }
