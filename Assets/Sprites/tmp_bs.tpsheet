@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:61bf300ab761a0822fcafb3e5b547940:e330e82387480fd0133b318adfa74e98:3b36f4081964e10754e530086591b57f$
+# $TexturePacker:SmartUpdate:2e2e98fec20872e2f703719978b16082:e330e82387480fd0133b318adfa74e98:3b36f4081964e10754e530086591b57f$
 #
 :format=40300
 :texture=tmp_bs.png
@@ -13,8 +13,8 @@
 :borders=disabled
 :alphahandling=ClearTransparentPixels
 
-Temp Bag Slap-01;1;99;96;98; 0.5625;0.26530612244897955; 0;0;0;0; 3;96;0;0;0;47;98; 1;0;1;2
-Temp Bag Slap-02;1;199;154;56; 0.5;0.5; 0;0;0;0; 4;154;0;0;0;0;56;154;56; 2;1;2;3;0;1;3
-Temp Bag Slap-03;183;223;32;32; 0.75;0.40625; 0;0;0;0; 4;32;0;0;0;0;32;32;32; 2;1;2;3;0;1;3
-Temp Bag Slap-04;157;103;24;152; 0.5;0.5; 0;0;0;0; 4;24;0;0;0;0;152;24;152; 2;1;2;3;0;1;3
-Temp Bag Slap-05;1;28;105;69; 0.4857142857142857;0.37681159420289856; 0;0;0;0; 4;105;0;0;0;0;69;105;69; 2;1;2;3;0;1;3
+Temp Bag Slap-01;27;46;92;80; 0.5;0.5; 0;0;0;0
+Temp Bag Slap-02;1;199;154;56; 0.5;0.5; 0;0;0;0
+Temp Bag Slap-03;157;223;32;32; 0.5;0.5; 0;0;0;0
+Temp Bag Slap-04;1;45;24;152; 0.5;0.5; 0;0;0;0
+Temp Bag Slap-05;27;128;105;69; 0.5;0.5; 0;0;0;0

@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -113,12 +113,12 @@ TextureImporter:
       name: Temp Bag Slap-01
       rect:
         serializedVersion: 2
-        x: 1
-        y: 99
-        width: 96
-        height: 98
-      alignment: 9
-      pivot: {x: 0.5625, y: 0.26530612}
+        x: 27
+        y: 46
+        width: 92
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Temp Bag Slap-03
       rect:
         serializedVersion: 2
-        x: 183
+        x: 157
         y: 223
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.75, y: 0.40625}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,8 +176,8 @@ TextureImporter:
       name: Temp Bag Slap-04
       rect:
         serializedVersion: 2
-        x: 157
-        y: 103
+        x: 1
+        y: 45
         width: 24
         height: 152
       alignment: 0
@@ -197,12 +197,12 @@ TextureImporter:
       name: Temp Bag Slap-05
       rect:
         serializedVersion: 2
-        x: 1
-        y: 28
+        x: 27
+        y: 128
         width: 105
         height: 69
-      alignment: 9
-      pivot: {x: 0.4857143, y: 0.3768116}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
