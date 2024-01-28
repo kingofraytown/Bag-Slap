@@ -50,6 +50,7 @@ public class EnemyController : MonoBehaviour
             if(hurtTimer < 0f)
             {
                 currentState = EnemyStates.Angered;
+                animator.SetBool("hurt", true);
             }
         }
 
@@ -81,6 +82,8 @@ public class EnemyController : MonoBehaviour
             }
             else {
                 currentState = EnemyStates.Dead;
+                animator.SetBool("hurt", false);
+                animator.SetBool("dead", true);
             }
             
             
@@ -151,6 +154,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             //if player is not in range return to idle state
+            animator.SetBool("hurt", false);
             currentState = EnemyStates.Idle;
         }
     }

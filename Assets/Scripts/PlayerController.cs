@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public Vector3 itemOffset;
     public float minItemDropRadius;
     public float maxItemDropRadius;
+    public GameObject bagObject;
+    public bool gameOver;
+    public AudioClip slapSound;
+    public AudioClip hitSound;
+    public AudioSource audioSource;
 
     public enum PlayerStates
     {
@@ -63,9 +68,6 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody2D.AddForce(_movement * speed);
         Vector2 faceingDir = _mousePos - _rigidbody2D.position;
-        //float angle = Mathf.Atan2(faceingDir.y, faceingDir.x) * Mathf.Rad2Deg;
-        //_rigidbody2D.MoveRotation(angle);
-
 
     }
 
@@ -76,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext cc)
     {
-        if (currentState != PlayerStates.Dead)
+        if ((currentState != PlayerStates.Dead) || gameOver == false)
         {
             _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
             transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Slap");
             currentState = PlayerStates.Slapping;
             slapTimer = slapTime;
+            audioSource.PlayOneShot(slapSound);
         }
     }
 
@@ -102,15 +105,16 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("player slapped");
                 DropItems();
+                audioSource.PlayOneShot(hitSound);
             }
 
             if (collision.gameObject.tag == "item")
             {
                 collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
                 //Debug.Log("item grab");
-                collision.transform.parent = transform;
+                collision.transform.parent = bagObject.transform;
 
-                collision.transform.localPosition = Vector3.zero + (itemOffset * bag.Count);
+                collision.transform.localPosition = Vector3.zero;
                 bag.Push(collision.gameObject);
                 itemText.text = bag.Count.ToString();
             }
@@ -127,6 +131,8 @@ public class PlayerController : MonoBehaviour
         if (bag.Count == 0)
         {
             currentState = PlayerStates.Dead;
+            animator.SetBool("dead",true);
+            gameOver = true;
         }
         else
         {
