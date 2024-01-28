@@ -1,0 +1,41 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:1ca8604478fee14d7230a2e3e2159a97:cf64c37de3de3fa31bd6cd0ac5fb3982:6be8f90df95d2fae9c4c780114c2471c$
+#
+:format=40300
+:texture=bs_stuff.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+Bag Slap Peices-01;658;1737;192;151; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-02;141;1737;156;151; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-03;349;1319;218;194; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-04;1;1544;183;171; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-05;299;1717;167;171; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-06;535;1532;182;183; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-07;736;1897;150;150; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-08;147;1313;200;200; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-09;719;1515;187;200; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-10;369;1515;164;200; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-11;73;2011;130;36; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-12;1;1977;70;70; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-13;217;835;143;384; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-14;783;1221;133;292; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-15;626;1894;108;153; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-16;569;1304;212;209; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-17;1;1721;138;167; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-18;362;847;359;372; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-19;1;1263;144;250; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-20;319;1936;114;111; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-21;507;1930;117;117; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-22;468;1738;188;150; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-23;435;1890;70;157; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-24;205;1935;112;112; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-25;186;1541;181;174; 0.5;0.5; 0;0;0;0
+Bag Slap Peices-27;1;1001;214;218; 0.5;0.5; 0;0;0;0
