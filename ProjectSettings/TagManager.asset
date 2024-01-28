@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player_slap
   - enemy_slap
+  - item
   layers:
   - Default
   - TransparentFX
