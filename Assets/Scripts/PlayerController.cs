@@ -76,8 +76,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext cc)
     {
-        _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
-        transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
+        if (currentState != PlayerStates.Dead)
+        {
+            _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
+            transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
+        }
     }
 
     public void OnSlap()
@@ -93,21 +96,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemy_slap")
+        if (currentState != PlayerStates.Dead)
         {
-            Debug.Log("player slapped");
-            DropItems();
-        }
+            if (collision.gameObject.tag == "enemy_slap")
+            {
+                Debug.Log("player slapped");
+                DropItems();
+            }
 
-        if (collision.gameObject.tag == "item")
-        {
-            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-            Debug.Log("item grab");
-            collision.transform.parent = transform;
+            if (collision.gameObject.tag == "item")
+            {
+                collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                //Debug.Log("item grab");
+                collision.transform.parent = transform;
 
-            collision.transform.localPosition = Vector3.zero + (itemOffset * bag.Count);
-            bag.Push(collision.gameObject);
-            itemText.text = bag.Count.ToString();
+                collision.transform.localPosition = Vector3.zero + (itemOffset * bag.Count);
+                bag.Push(collision.gameObject);
+                itemText.text = bag.Count.ToString();
+            }
         }
     }
 
@@ -118,30 +124,40 @@ public class PlayerController : MonoBehaviour
         //get player position
         Vector3 ppos = gameObject.transform.position;
 
-        //iterate through bag
-        while (bag.Count != 0) 
+        if (bag.Count == 0)
         {
-            //get random x and y near the player
-            float rx = Random.Range(minItemDropRadius, maxItemDropRadius);
-            float ry = Random.Range(minItemDropRadius, maxItemDropRadius);
-            int coin = Random.Range(0, 2);
-            if(coin == 0)
-            {
-                coin = -1;
-            } else
-            {
-                coin = 1;
-            }
-            Vector3 itemDropLoc = new Vector3(ppos.x + (coin * rx), ppos.y + (coin * ry), 0f);
-            //unparent item from player
-            GameObject currentItem = bag.Pop();
-            currentItem.transform.parent = null;
-            currentItem.transform.position = itemDropLoc;
-            currentItem.GetComponent<PolygonCollider2D>().enabled = true;
+            currentState = PlayerStates.Dead;
         }
+        else
+        {
 
-        itemText.text = bag.Count.ToString();
+            //iterate through bag
+            while (bag.Count != 0)
+            {
+                //get random x and y near the player
+                float rx = Random.Range(minItemDropRadius, maxItemDropRadius);
+                float ry = Random.Range(minItemDropRadius, maxItemDropRadius);
+                int coin = Random.Range(0, 2);
+                if (coin == 0)
+                {
+                    coin = -1;
+                }
+                else
+                {
+                    coin = 1;
+                }
+                Vector3 itemDropLoc = new Vector3(ppos.x + (coin * rx), ppos.y + (coin * ry), 0f);
+                //unparent item from player
+                GameObject currentItem = bag.Pop();
+                currentItem.transform.parent = null;
+                currentItem.transform.position = itemDropLoc;
+                currentItem.GetComponent<PolygonCollider2D>().enabled = true;
+            }
+
+            itemText.text = bag.Count.ToString();
+        }
 
 
     }
+
 }
