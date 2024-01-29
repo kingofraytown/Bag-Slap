@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
     public float chaseSpeed;
     public GameObject player;
     public bool bagEmpty = false;
+    public float attackWaitTime;
+    public float attackWaitTimer;
+    PlayerController pc;
 
     public enum EnemyStates
     {
@@ -39,6 +42,7 @@ public class EnemyController : MonoBehaviour
     {
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+        pc = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -75,7 +79,6 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "player_slap")
         {
             player = collision.gameObject;
-            Debug.Log("enemy slapped");
             if (!bagEmpty)
             {
                 DropItems();
@@ -133,7 +136,7 @@ public class EnemyController : MonoBehaviour
     {
         //check for player distance
         float distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        Debug.Log(distance);
+
         //if in range
         if (distance <= lookRange)
         {
@@ -144,18 +147,27 @@ public class EnemyController : MonoBehaviour
             //move toward player
             rigidbody2D.velocity = transform.up * chaseSpeed;
             //if in range slap player
-            if(distance <= slapRange)
+            if((distance <= slapRange) && (attackWaitTimer == 0))
             {
                 animator.SetTrigger("slap");
                 currentState = EnemyStates.Slapping;
                 slapTimer = slapTime;
+                attackWaitTimer = attackWaitTime;
             }
+
+            attackWaitTimer -= Time.deltaTime;
+            if(attackWaitTimer < 0)
+            {
+                attackWaitTimer = 0;
+            }
+
         }
         else
         {
             //if player is not in range return to idle state
             animator.SetBool("hurt", false);
             currentState = EnemyStates.Idle;
+            attackWaitTimer = 0;
         }
     }
 }

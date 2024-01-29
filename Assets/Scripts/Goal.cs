@@ -57,6 +57,7 @@ public class Goal : MonoBehaviour
     public void CalculateTotalItems()
     {
         //
+        playerController.gameOver = true;
         int bagCount = playerController.bag.Count;
         int total = 0;
 
@@ -71,7 +72,6 @@ public class Goal : MonoBehaviour
         }
 
         float result = total / (float)bagCount;
-        Debug.Log(result);
         PercentText.text = "You delivered " + result.ToString("P1") + " " + itemWanted.ToString();
         if(result < 0.5f)
         {

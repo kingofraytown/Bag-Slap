@@ -189,11 +189,13 @@ MonoBehaviour:
   itemOffset: {x: 0, y: 0, z: 0}
   minItemDropRadius: 1.5
   maxItemDropRadius: 3
-  lookRange: 4
+  lookRange: 10
   slapRange: 2
   chaseSpeed: 2
   player: {fileID: 0}
   bagEmpty: 0
+  attackWaitTime: 2.5
+  attackWaitTimer: 0
   currentState: 0
 --- !u!1 &1762905531376776528
 GameObject:

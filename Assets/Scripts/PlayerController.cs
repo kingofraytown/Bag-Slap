@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext cc)
     {
-        if ((currentState != PlayerStates.Dead) || gameOver == false)
+        if ((currentState != PlayerStates.Dead) && gameOver == false)
         {
             _mousePos = camera.ScreenToWorldPoint(cc.ReadValue<Vector2>());
             transform.up = _mousePos - new Vector2(transform.position.x, transform.position.y);
@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "enemy_slap")
             {
-                Debug.Log("player slapped");
                 DropItems();
                 audioSource.PlayOneShot(hitSound);
             }
